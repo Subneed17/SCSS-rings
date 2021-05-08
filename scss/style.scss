@@ -1,0 +1,31 @@
+
+$colorRing : orange;
+$colorOmbre :grey;
+$nbrRing : 9;
+
+.anneaux{
+    margin-left: 50px;
+    height:auto;
+    width:600px;
+    display: flex;
+}
+
+@mixin mysize($x,$i){
+    width: $x*$i;
+    height: $x*$i;
+}
+
+@mixin ombre($a){
+    box-shadow: $a*2px $a*2px $a*2px $colorOmbre, inset $a*2px $a*2px $a*2px $colorOmbre;   
+}
+
+@for $i from 1 through $nbrRing {
+    .ring#{$i} {
+        margin:auto;
+        border: 8px solid $colorRing;
+        border-radius: 50%;
+        @include mysize($i , 40px);
+        @include ombre($i);
+        margin-left: -$i*10px;
+    }
+}
